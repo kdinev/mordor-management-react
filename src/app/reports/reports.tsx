@@ -1,7 +1,7 @@
 import { useState, useActionState, useOptimistic, startTransition } from 'react';
 import { commanders } from '../../data/commanders';
 import type { Commander, CommanderReport } from '../../data/types';
-import { IgrLinearProgress } from 'igniteui-react';
+import { IgrLinearProgress, IgrSelect, IgrSelectItem } from 'igniteui-react';
 import styles from './reports.module.css';
 
 const REALM_COLORS: Record<string, string> = {
@@ -32,6 +32,8 @@ const STATUS_COLORS: Record<string, string> = {
 type LoginResult = { error: string | null };
 
 function LoginView({ onSuccess }: { onSuccess: (c: Commander) => void }) {
+  const [commanderId, setCommanderId] = useState('');
+
   const [state, dispatch, isPending] = useActionState<LoginResult, FormData>(
     (_prev, formData) => {
       const commanderId = formData.get('commanderId') as string;
@@ -56,22 +58,22 @@ function LoginView({ onSuccess }: { onSuccess: (c: Commander) => void }) {
         </p>
         <form action={dispatch} className={styles.loginForm}>
           <div className={styles.formGroup}>
-            <label className={styles.fieldLabel} htmlFor="commanderId">
+            <label className={styles.fieldLabel}>
               Who art thou?
             </label>
-            <select
-              id="commanderId"
-              name="commanderId"
-              className={styles.styledSelect}
+            <IgrSelect
+              value={commanderId}
+              placeholder="— Choose your identity —"
               disabled={isPending}
+              onChange={(e: CustomEvent<{ value: string }>) => setCommanderId(e.detail.value)}
             >
-              <option value="">— Choose your identity —</option>
               {commanders.map(c => (
-                <option key={c.id} value={c.id}>
+                <IgrSelectItem key={c.id} value={c.id}>
                   {c.name} · {c.title}
-                </option>
+                </IgrSelectItem>
               ))}
-            </select>
+            </IgrSelect>
+            <input type="hidden" name="commanderId" value={commanderId} />
           </div>
           <div className={styles.formGroup}>
             <label className={styles.fieldLabel} htmlFor="oath">
@@ -112,6 +114,8 @@ function ReportForm({
 }) {
   const [submitted, setSubmitted] = useState(false);
   const [progress, setProgress] = useState(50);
+  const [status, setStatus] = useState<CommanderReport['status']>('On Track');
+  const [urgency, setUrgency] = useState<CommanderReport['urgency']>('Medium');
 
   const [state, dispatch, isPending] = useActionState<SubmitResult, FormData>(
     (_prev, formData) => {
@@ -160,6 +164,8 @@ function ReportForm({
           onClick={() => {
             setSubmitted(false);
             setProgress(50);
+            setStatus('On Track');
+            setUrgency('Medium');
           }}
         >
           📋 Submit Another Report
@@ -235,32 +241,36 @@ function ReportForm({
 
           <div className={styles.formGroup}>
             <label className={styles.fieldLabel}>🚩 Mission Status</label>
-            <select
-              name="status"
-              className={styles.styledSelect}
-              defaultValue="On Track"
+            <IgrSelect
+              value={status}
               disabled={isPending}
+              onChange={(e: CustomEvent<{ value: string }>) =>
+                setStatus(e.detail.value as CommanderReport['status'])
+              }
             >
-              <option value="On Track">On Track</option>
-              <option value="Delayed">Delayed</option>
-              <option value="Critical">Critical</option>
-              <option value="Completed">Completed</option>
-            </select>
+              <IgrSelectItem value="On Track">On Track</IgrSelectItem>
+              <IgrSelectItem value="Delayed">Delayed</IgrSelectItem>
+              <IgrSelectItem value="Critical">Critical</IgrSelectItem>
+              <IgrSelectItem value="Completed">Completed</IgrSelectItem>
+            </IgrSelect>
+            <input type="hidden" name="status" value={status} />
           </div>
 
           <div className={styles.formGroup}>
             <label className={styles.fieldLabel}>⚠️ Urgency Level</label>
-            <select
-              name="urgency"
-              className={styles.styledSelect}
-              defaultValue="Medium"
+            <IgrSelect
+              value={urgency}
               disabled={isPending}
+              onChange={(e: CustomEvent<{ value: string }>) =>
+                setUrgency(e.detail.value as CommanderReport['urgency'])
+              }
             >
-              <option value="Critical">Critical</option>
-              <option value="High">High</option>
-              <option value="Medium">Medium</option>
-              <option value="Low">Low</option>
-            </select>
+              <IgrSelectItem value="Critical">Critical</IgrSelectItem>
+              <IgrSelectItem value="High">High</IgrSelectItem>
+              <IgrSelectItem value="Medium">Medium</IgrSelectItem>
+              <IgrSelectItem value="Low">Low</IgrSelectItem>
+            </IgrSelect>
+            <input type="hidden" name="urgency" value={urgency} />
           </div>
         </div>
 
