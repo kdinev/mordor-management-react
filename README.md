@@ -4,11 +4,23 @@ A dark-themed enterprise management application for Sauron's forces, built with 
 
 ## Origin
 
-This application was created entirely by **GitHub Copilot** (powered by **Claude Sonnet 4.6**) from a single prompt:
+This application was created entirely by **GitHub Copilot** (powered by **Claude Sonnet 4.6**) through a series of natural language prompts, on top of a blank project scaffolded with Ignite UI CLI:
+
+```sh
+npx ig new mordor-management-react --framework=react
+```
+
+### Prompt 1 — Full application
 
 > *"I'm Sauron, the Dark Lord, and I want to create an application to manage Mordor, and the puppet states I control, like Isengard. Even though I have no intention of invading the Middle Earth, I want to be able to get quick reports from my generals, to have an overview of the battalions they control, their numbers, morale, health and what is the primary race of solders they consist of. I want to have an org chart of my generals and lieutenants. I also want to keep track of my food suppliers availability and food production, my armory suppliers and smithing production by location. Also I want quick access to my spy network reports with highlights of items regarding the One Ring."*
 
-From that prompt, Copilot autonomously designed and implemented the full application — data models, page layout, navigation, six feature pages, a login-gated commander report portal, and all styling — with no manual coding required.
+From this prompt, Copilot autonomously designed and implemented the full application — data models, page layout, navigation, and six feature pages — with no manual coding required.
+
+### Prompt 2 — Commander Reports portal
+
+> *"Create a report form for each general, so that every member of the org chart can login and submit up-to-date reports on their activities, achievements, failures and progress."*
+
+This added the login-gated `/reports` page with per-commander authentication, a structured report submission form, and a session history view using React 19 `useActionState` and `useOptimistic`.
 
 ## Features
 
