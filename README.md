@@ -1,7 +1,50 @@
-# mordor-management-react
+# Mordor Management System
 
-This project was generated with [Ignite UI CLI](https://github.com/IgniteUI/igniteui-cli) version 15.0.0-rc.0.<br>
-The template builds upon a project bootstrapped with [Vite](https://vitejs.dev/).
+A dark-themed enterprise management application for Sauron's forces, built with React 19, TypeScript, Vite, and [Ignite UI for React](https://www.infragistics.com/products/ignite-ui-react).
+
+## Origin
+
+This application was created entirely by **GitHub Copilot** (powered by **Claude Sonnet 4.6**) from a single prompt:
+
+> *"I'm Sauron, the Dark Lord, and I want to create an application to manage Mordor, and the puppet states I control, like Isengard. Even though I have no intention of invading the Middle Earth, I want to be able to get quick reports from my generals, to have an overview of the battalions they control, their numbers, morale, health and what is the primary race of solders they consist of. I want to have an org chart of my generals and lieutenants. I also want to keep track of my food suppliers availability and food production, my armory suppliers and smithing production by location. Also I want quick access to my spy network reports with highlights of items regarding the One Ring."*
+
+From that prompt, Copilot autonomously designed and implemented the full application — data models, page layout, navigation, six feature pages, a login-gated commander report portal, and all styling — with no manual coding required.
+
+## Features
+
+- **Dark Throne** — Command overview dashboard with KPI strip (total warriors, battalions, ring intel, critical alerts) and summary cards for all departments
+- **Military Command** — Battalion roster with realm filters, morale/health progress bars, and status chips
+- **Order of Command** — Full org chart tree (Sauron → Witch-king → Gothmog → …) built with `IgrTree`
+- **Provisions** — Food supplier cards with availability-level filtering
+- **Armories & Forges** — Forge cards with production status and daily output meters
+- **Eye of Sauron** — Intelligence reports accordion with urgency filtering and Ring intel highlighting
+- **Commander Reports** — Login-gated portal where every member of the org chart can submit activity reports (achievements, failures, progress) using React 19 `useActionState` and `useOptimistic`
+
+## Tech Stack
+
+| Layer | Choice |
+|---|---|
+| Framework | React 19 + TypeScript |
+| Build tool | Vite |
+| UI components | Ignite UI for React (`igniteui-react`) |
+| Theme | Dark Indigo (`igniteui-webcomponents/themes/dark/indigo.css`) |
+| Router | React Router v7 |
+| AI model | GitHub Copilot / Claude Sonnet 4.6 |
+
+This project was scaffolded with [Ignite UI CLI](https://github.com/IgniteUI/igniteui-cli) version 15.0.0-rc.0.
+
+## AI Tooling
+
+Beyond the base model, Copilot used a suite of specialised tools to build this application correctly and efficiently:
+
+### Skills (context injected into the agent)
+- **`igniteui-react-components`** — Provided component selection guidance, JSX patterns, event handling, ref usage, and TypeScript integration for Ignite UI for React. Used throughout to pick the right component for each UI pattern (e.g. `IgrTree` for the org chart, `IgrAccordion` for intelligence reports, `IgrLinearProgress` for morale/health meters).
+- **`igniteui-react-customize-theme`** — Covered CSS custom properties, Sass theming, and component-level overrides. Informed the dark Indigo theme setup and scoped styling decisions.
+- **`igniteui-react-optimize-bundle-size`** — Guided tree-shaking configuration and lazy-loading strategies to keep the production bundle lean.
+
+### MCP Servers (live tool calls during generation)
+- **[Ignite UI CLI MCP](https://github.com/IgniteUI/igniteui-cli)** (`mcp_igniteui-cli_*`) — Provided real-time access to the full Ignite UI for React component catalogue (312 components), documentation lookup, API reference, and project setup guides. Used to verify component APIs before writing JSX.
+- **[Ignite UI Theming MCP](https://www.infragistics.com/products/ignite-ui-react/react/components/theming)** (`mcp_igniteui-them_*`) — Offered theme generation tools for palettes, typography, elevations, and component-level design token overrides. Used to validate theme configuration against the dark Indigo preset.
 
 ## Development server
 
