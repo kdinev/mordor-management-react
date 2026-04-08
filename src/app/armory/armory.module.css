@@ -1,0 +1,225 @@
+:local(.page) {
+  color: #ccc;
+}
+
+:local(.header) {
+  margin-bottom: 1.25rem;
+}
+
+:local(.title) {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+:local(.subtitle) {
+  color: #666;
+  font-size: 0.82rem;
+  margin-top: 0.2rem;
+  font-style: italic;
+}
+
+/* Summary Row */
+:local(.summaryRow) {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+:local(.summaryCard) {
+  background: #0d0d1a;
+  border: 1px solid #2a1a1a;
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  flex: 1;
+  min-width: 110px;
+}
+
+:local(.summaryClickable) {
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+:local(.summaryClickable):hover {
+  border-color: #8b0000;
+  background: rgba(192, 57, 43, 0.08);
+}
+
+:local(.summaryActive) {
+  border-color: #c0392b;
+  background: rgba(192, 57, 43, 0.12);
+}
+
+:local(.summaryVal) {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #c0392b;
+  line-height: 1;
+}
+
+:local(.summaryLbl) {
+  font-size: 0.65rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+/* Production Meter */
+:local(.productionMeter) {
+  background: #0d0d1a;
+  border: 1px solid #2a1a1a;
+  border-radius: 8px;
+  padding: 0.875rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+:local(.meterLabel) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.78rem;
+  color: #888;
+}
+
+:local(.meterPct) {
+  font-weight: 700;
+  color: #c0392b;
+}
+
+:local(.meterBar) {
+  width: 100%;
+  --ig-success-500: #c0392b;
+}
+
+/* Forge Grid */
+:local(.forgeGrid) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1rem;
+}
+
+:local(.card) {
+  background: #0d0d1a !important;
+  border: 1px solid #2a1a1a !important;
+  border-radius: 8px !important;
+}
+
+:local(.cardTitle) {
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  color: #ddd !important;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+:local(.cardSub) {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.2rem;
+}
+
+:local(.statusBadge) {
+  font-size: 0.65rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 4px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border: 1px solid currentColor;
+  text-transform: uppercase;
+}
+
+:local(.locationText) {
+  font-size: 0.7rem;
+  color: #666;
+  font-style: italic;
+}
+
+/* Stats */
+:local(.statsRow) {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.875rem;
+}
+
+:local(.statBlock) {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+:local(.statNum) {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #c0392b;
+  line-height: 1.2;
+}
+
+:local(.statLbl) {
+  font-size: 0.62rem;
+  color: #555;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Progress bar */
+:local(.barRow) {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.25rem;
+}
+
+:local(.barLabel) {
+  font-size: 0.72rem;
+  color: #888;
+}
+
+:local(.barPct) {
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+:local(.capacityBar) {
+  width: 100%;
+  margin-bottom: 0.875rem;
+}
+
+/* Status colors */
+:local(.statusActive) {
+  color: #27ae60;
+  --ig-success-500: #27ae60;
+}
+
+:local(.statusReduced) {
+  color: #f39c12;
+  --ig-success-500: #f39c12;
+}
+
+:local(.statusUpgrading) {
+  color: #3498db;
+  --ig-success-500: #3498db;
+}
+
+:local(.statusDamaged) {
+  color: #e74c3c;
+  --ig-success-500: #e74c3c;
+}
+
+:local(.notes) {
+  font-size: 0.73rem;
+  color: #777;
+  line-height: 1.5;
+  font-style: italic;
+  border-top: 1px solid #1a1a2a;
+  padding-top: 0.625rem;
+}

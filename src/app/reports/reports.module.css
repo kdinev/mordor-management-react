@@ -1,0 +1,502 @@
+/* ── Login ───────────────────────────────────────────────────────────────── */
+
+.loginPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 64px);
+  padding: 2rem;
+}
+
+.loginCard {
+  background: #12121e;
+  border: 1px solid #2a1a1a;
+  border-top: 3px solid #cc3300;
+  border-radius: 4px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+}
+
+.loginEye {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 0.75rem;
+  filter: drop-shadow(0 0 14px rgba(204, 51, 0, 0.8));
+}
+
+.loginTitle {
+  font-size: 1.6rem;
+  color: #d4a017;
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.loginSubtitle {
+  color: #777;
+  font-size: 0.875rem;
+  margin: 0 0 2rem;
+  line-height: 1.5;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  text-align: left;
+}
+
+.oathHint {
+  color: #444;
+  font-size: 0.75rem;
+  margin: 1.25rem 0 0;
+  font-style: italic;
+}
+
+/* ── Shared Fields ───────────────────────────────────────────────────────── */
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.fieldLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #d4a017;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.fieldHint {
+  font-size: 0.775rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.styledSelect {
+  background: #1a1a2e;
+  border: 1px solid #2a2a3e;
+  border-radius: 3px;
+  color: #ccc;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.875rem;
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23888'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 2rem;
+}
+
+.styledSelect:focus {
+  border-color: #cc3300;
+  outline: none;
+}
+
+.styledSelect:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.styledInput {
+  background: #1a1a2e;
+  border: 1px solid #2a2a3e;
+  border-radius: 3px;
+  color: #ccc;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.875rem;
+  width: 100%;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.styledInput:focus {
+  border-color: #cc3300;
+}
+
+.styledInput:disabled {
+  opacity: 0.5;
+}
+
+.styledTextarea {
+  background: #1a1a2e;
+  border: 1px solid #2a2a3e;
+  border-radius: 3px;
+  color: #ccc;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.875rem;
+  width: 100%;
+  resize: vertical;
+  font-family: inherit;
+  outline: none;
+  box-sizing: border-box;
+  line-height: 1.5;
+}
+
+.styledTextarea:focus {
+  border-color: #cc3300;
+}
+
+.styledTextarea:disabled {
+  opacity: 0.5;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+@media (max-width: 640px) {
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+.styledRange {
+  width: 100%;
+  accent-color: #cc3300;
+  cursor: pointer;
+  margin-top: 0.4rem;
+}
+
+.styledRange:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.progressValue {
+  color: #cc3300;
+  font-weight: 700;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────────── */
+
+.loginBtn,
+.submitBtn {
+  background: #3a0000;
+  border: 1px solid #cc3300;
+  border-radius: 3px;
+  color: #ff6633;
+  padding: 0.7rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  width: 100%;
+}
+
+.loginBtn:hover:not(:disabled),
+.submitBtn:hover:not(:disabled) {
+  background: #5a0000;
+  color: #ff8855;
+}
+
+.loginBtn:disabled,
+.submitBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.toggleBtn {
+  background: #1a1a2e;
+  border: 1px solid #3a3a5e;
+  border-radius: 3px;
+  color: #aaa;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.toggleBtn:hover {
+  border-color: #6a6aaa;
+  color: #ccc;
+}
+
+.logoutBtn {
+  background: transparent;
+  border: 1px solid #3a2a2a;
+  border-radius: 3px;
+  color: #664444;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+.logoutBtn:hover {
+  color: #cc6666;
+  border-color: #774444;
+}
+
+.newReportBtn {
+  background: #1a1a2e;
+  border: 1px solid #3a3a5e;
+  border-radius: 3px;
+  color: #8888cc;
+  padding: 0.6rem 1.5rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.newReportBtn:hover {
+  background: #22223e;
+  color: #aaaaee;
+}
+
+/* ── Messages ────────────────────────────────────────────────────────────── */
+
+.errorMsg {
+  background: #1a0000;
+  border: 1px solid #660000;
+  border-radius: 3px;
+  color: #ff6666;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.825rem;
+}
+
+/* ── Report Page ─────────────────────────────────────────────────────────── */
+
+.reportPage {
+  padding: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.commanderBanner {
+  background: #12121e;
+  border: 1px solid #2a2a3e;
+  border-left: 4px solid #8b0000;
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.commanderInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.commanderAvatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+
+.commanderName {
+  font-size: 1.1rem;
+  color: #e0c070;
+  margin: 0 0 0.2rem;
+  font-weight: 600;
+}
+
+.commanderTitle {
+  font-size: 0.8rem;
+  color: #888;
+  margin: 0 0 0.4rem;
+}
+
+.realmTag {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 2px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.bannerActions {
+  display: flex;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* ── Form Section ────────────────────────────────────────────────────────── */
+
+.formSection {
+  background: #0e0e1a;
+  border: 1px solid #1e1e3e;
+  border-radius: 4px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.sectionTitle {
+  color: #d4a017;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 0.03em;
+}
+
+.reportForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ── Submitted State ─────────────────────────────────────────────────────── */
+
+.submittedState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 2.5rem 1rem;
+  text-align: center;
+}
+
+.submittedIcon {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 0 8px rgba(212, 160, 23, 0.6));
+}
+
+.submittedTitle {
+  color: #d4a017;
+  font-size: 1.2rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.submittedMsg {
+  color: #888;
+  font-size: 0.875rem;
+  margin: 0;
+  max-width: 380px;
+  line-height: 1.5;
+}
+
+/* ── History Section ─────────────────────────────────────────────────────── */
+
+.historySection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.emptyMsg {
+  color: #555;
+  font-style: italic;
+  text-align: center;
+  padding: 2.5rem;
+}
+
+.reportList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.reportCard {
+  background: #0e0e1a;
+  border: 1px solid #1e1e3e;
+  border-radius: 4px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.reportCardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.reportDate {
+  color: #888;
+  font-size: 0.82rem;
+}
+
+.reportBadges {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.progressRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.progressLabel {
+  font-size: 0.8rem;
+  color: #888;
+  white-space: nowrap;
+  min-width: 100px;
+}
+
+.progressBar {
+  flex: 1;
+}
+
+.reportFields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-top: 1px solid #1a1a2e;
+  padding-top: 0.75rem;
+}
+
+.reportField strong {
+  display: block;
+  font-size: 0.75rem;
+  color: #d4a017;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.reportField p {
+  margin: 0;
+  color: #bbb;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}

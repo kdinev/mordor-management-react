@@ -1,0 +1,338 @@
+:local(.page) {
+  color: #ccc;
+}
+
+:local(.header) {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+:local(.title) {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+:local(.headerBadge) {
+  font-size: 0.65rem;
+}
+
+:local(.subtitle) {
+  color: #666;
+  font-size: 0.82rem;
+  font-style: italic;
+}
+
+/* Ring Alert Banner */
+:local(.ringAlert) {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.875rem 1.25rem;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid #d4af37;
+  border-radius: 8px;
+  margin-bottom: 1.25rem;
+}
+
+:local(.ringAlertIcon) {
+  font-size: 1.75rem;
+  filter: drop-shadow(0 0 8px #d4af37);
+  flex-shrink: 0;
+}
+
+:local(.ringAlertTitle) {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #d4af37;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.2rem;
+}
+
+:local(.ringAlertText) {
+  font-size: 0.78rem;
+  color: #b8973b;
+}
+
+/* Summary Strip */
+:local(.summaryStrip) {
+  display: flex;
+  gap: 1.5rem;
+  background: #0d0d1a;
+  border: 1px solid #2a1a1a;
+  border-radius: 8px;
+  padding: 0.875rem 1.5rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+:local(.summaryItem) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 70px;
+}
+
+:local(.summaryVal) {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #c0392b;
+  line-height: 1;
+}
+
+:local(.summaryLbl) {
+  font-size: 0.62rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 0.1rem;
+}
+
+/* Urgency colors */
+:local(.urgencyCritical) { color: #e74c3c; --ig-error-500: #e74c3c; }
+:local(.urgencyHigh) { color: #e67e22; }
+:local(.urgencyMedium) { color: #f39c12; }
+:local(.urgencyLow) { color: #27ae60; }
+
+/* Controls */
+:local(.controls) {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+  align-items: center;
+}
+
+:local(.filterGroup) {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+:local(.filterLabel) {
+  font-size: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+}
+
+:local(.chips) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+:local(.chip) {
+  --ig-gray-300: #2a1a1a;
+  cursor: pointer;
+}
+
+:local(.chipActive) {
+  --ig-gray-300: #8b0000;
+  --ig-gray-900: #fff;
+  cursor: pointer;
+}
+
+:local(.chipRing) {
+  --ig-gray-300: #3a2a0a;
+  cursor: pointer;
+}
+
+:local(.chipRingActive) {
+  --ig-gray-300: #7a5a00;
+  --ig-gray-900: #d4af37;
+  cursor: pointer;
+}
+
+:local(.reportCount) {
+  font-size: 0.72rem;
+  color: #666;
+  margin-bottom: 0.875rem;
+  font-style: italic;
+}
+
+/* Accordion */
+:local(.accordion) {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+:local(.panel) {
+  background: #0d0d1a !important;
+  border: 1px solid #2a1a1a !important;
+  border-radius: 8px !important;
+  border-left: 3px solid #8b0000 !important;
+}
+
+:local(.panelRing) {
+  border-left-color: #d4af37 !important;
+  background: rgba(212, 175, 55, 0.03) !important;
+  border-color: #3a2a0a !important;
+}
+
+/* Panel Title */
+:local(.panelTitle) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+:local(.panelTitleLeft) {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+:local(.urgencyDot) {
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+:local(.codename) {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ddd;
+  font-family: monospace;
+  letter-spacing: 0.08em;
+}
+
+:local(.ringChip) {
+  font-size: 0.62rem;
+  padding: 0.1rem 0.4rem;
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid #d4af37;
+  border-radius: 12px;
+  color: #d4af37;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+:local(.urgencyBadge) {
+  font-size: 0.62rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-weight: 700;
+  border: 1px solid currentColor;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+:local(.panelTitleRight) {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+:local(.region) {
+  font-size: 0.72rem;
+  color: #888;
+}
+
+:local(.date) {
+  font-size: 0.68rem;
+  color: #555;
+  font-style: italic;
+}
+
+:local(.expandIcon) {
+  color: #666;
+  font-size: 0.65rem;
+}
+
+/* Panel Content */
+:local(.panelContent) {
+  padding-top: 0.5rem;
+}
+
+:local(.summary) {
+  font-size: 0.85rem;
+  color: #bbb;
+  line-height: 1.5;
+  margin-bottom: 0.875rem;
+  font-weight: 500;
+}
+
+/* Ring Intel Box */
+:local(.ringIntel) {
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid #d4af37;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.875rem;
+}
+
+:local(.ringIntelHeader) {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #d4af37;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+:local(.ringIntelText) {
+  font-size: 0.82rem;
+  color: #b8973b;
+  line-height: 1.5;
+}
+
+/* Full Dispatch */
+:local(.reportBody) {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid #1a1a2a;
+  border-radius: 6px;
+  padding: 0.875rem 1rem;
+  margin-bottom: 0.875rem;
+}
+
+:local(.reportBodyHeader) {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #555;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #1a1a2a;
+  padding-bottom: 0.3rem;
+}
+
+:local(.content) {
+  font-size: 0.82rem;
+  color: #999;
+  line-height: 1.65;
+}
+
+/* Report Meta Footer */
+:local(.reportMeta) {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  font-size: 0.7rem;
+  color: #666;
+  border-top: 1px solid #1a1a2a;
+  padding-top: 0.625rem;
+}
+
+:local(.urgencyInline) {
+  font-size: 0.7rem;
+}

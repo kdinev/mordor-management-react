@@ -1,16 +1,17 @@
 {
-  "version": "15.0.0-rc.0",
-  "project": {
-    "defaultPort": 3003,
-    "framework": "react",
-    "projectType": "igr-ts",
-    "projectTemplate": "empty",
-    "theme": "default",
-    "isBundle": false,
-    "components": [],
-    "sourceFiles": [],
-    "isShowcase": false,
-    "version": ""
-  },
-  "build": {}
+    "version": "15.0.0-rc.0",
+    "project": {
+        "defaultPort": 3003,
+        "framework": "react",
+        "projectType": "igr-ts",
+        "projectTemplate": "empty",
+        "theme": "default",
+        "isBundle": false,
+        "components": [],
+        "sourceFiles": [],
+        "isShowcase": false,
+        "version": ""
+    },
+    "build": {},
+    "packagesInstalled": true
 }

@@ -1,0 +1,154 @@
+:local(.page) {
+  color: #ccc;
+}
+
+:local(.header) {
+  margin-bottom: 1.25rem;
+}
+
+:local(.title) {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+:local(.subtitle) {
+  color: #666;
+  font-size: 0.82rem;
+  margin-top: 0.2rem;
+  font-style: italic;
+}
+
+/* Legend */
+:local(.legend) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+:local(.legendItem) {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.6rem;
+  border-radius: 4px;
+  font-weight: 600;
+  border: 1px solid currentColor;
+}
+
+/* Tree */
+:local(.treeContainer) {
+  background: #0d0d1a;
+  border: 1px solid #2a1a1a;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+}
+
+:local(.tree) {
+  --ig-gray-100: #0d0d1a;
+  --ig-gray-200: #1a1a2a;
+  --ig-gray-900: #ccc;
+  min-width: 400px;
+}
+
+/* Node label */
+:local(.nodeLabel) {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.2rem 0;
+}
+
+:local(.nodeMain) {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+:local(.nodeName) {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ddd;
+}
+
+:local(.nodeTitle) {
+  font-size: 0.7rem;
+  color: #777;
+  font-style: italic;
+}
+
+/* Realm badges */
+:local(.realmBadge) {
+  font-size: 0.62rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border: 1px solid currentColor;
+  white-space: nowrap;
+}
+
+:local(.realmMordor) { color: #c0392b; background: rgba(192,57,43,0.12); }
+:local(.realmIsengard) { color: #7d6608; background: rgba(125,102,8,0.15); }
+:local(.realmHarad) { color: #d35400; background: rgba(211,84,0,0.12); }
+:local(.realmRhun) { color: #1a5276; background: rgba(26,82,118,0.15); }
+:local(.realmGundabad) { color: #6c3483; background: rgba(108,52,131,0.12); }
+:local(.realmDolGuldur) { color: #117a65; background: rgba(17,122,101,0.12); }
+:local(.realmDefault) { color: #666; background: rgba(100,100,100,0.1); }
+
+/* List view */
+:local(.listView) {
+  margin-top: 0.5rem;
+}
+
+:local(.listTitle) {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #c0392b;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.875rem;
+}
+
+:local(.commanderList) {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+:local(.commanderRow) {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0.625rem 1rem;
+  background: #0d0d1a;
+  border: 1px solid #2a1a1a;
+  border-radius: 6px;
+  gap: 1rem;
+}
+
+:local(.commanderLeft) {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+:local(.commanderName) {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ddd;
+}
+
+:local(.commanderTitle) {
+  font-size: 0.72rem;
+  color: #888;
+}
+
+:local(.commanderReports) {
+  font-size: 0.67rem;
+  color: #555;
+  font-style: italic;
+}
