@@ -1,7 +1,7 @@
 import { useState, useActionState, useOptimistic, startTransition } from 'react';
 import { commanders } from '../../data/commanders';
 import type { Commander, CommanderReport } from '../../data/types';
-import { IgrLinearProgress, IgrSelect, IgrSelectItem } from 'igniteui-react';
+import { IgrLinearProgress, IgrSelect, IgrSelectItem, IgrInput, IgrTextarea, IgrButton, IgrSlider } from 'igniteui-react';
 import styles from './reports.module.css';
 
 const REALM_COLORS: Record<string, string> = {
@@ -32,8 +32,6 @@ const STATUS_COLORS: Record<string, string> = {
 type LoginResult = { error: string | null };
 
 function LoginView({ onSuccess }: { onSuccess: (c: Commander) => void }) {
-  const [commanderId, setCommanderId] = useState('');
-
   const [state, dispatch, isPending] = useActionState<LoginResult, FormData>(
     (_prev, formData) => {
       const commanderId = formData.get('commanderId') as string;
@@ -62,10 +60,9 @@ function LoginView({ onSuccess }: { onSuccess: (c: Commander) => void }) {
               Who art thou?
             </label>
             <IgrSelect
-              value={commanderId}
+              name="commanderId"
               placeholder="— Choose your identity —"
               disabled={isPending}
-              onChange={(e: CustomEvent<{ value: string }>) => setCommanderId(e.detail.value)}
             >
               {commanders.map(c => (
                 <IgrSelectItem key={c.id} value={c.id}>
@@ -73,27 +70,24 @@ function LoginView({ onSuccess }: { onSuccess: (c: Commander) => void }) {
                 </IgrSelectItem>
               ))}
             </IgrSelect>
-            <input type="hidden" name="commanderId" value={commanderId} />
           </div>
           <div className={styles.formGroup}>
             <label className={styles.fieldLabel} htmlFor="oath">
               Dark Oath
             </label>
-            <input
+            <IgrInput
               id="oath"
               name="oath"
               type="password"
-              autoComplete="off"
-              spellCheck={false}
-              className={styles.styledInput}
+              autocomplete="off"
               placeholder="Ash nazg durbatulûk…"
               disabled={isPending}
             />
           </div>
           {state.error && <div className={styles.errorMsg}>{state.error}</div>}
-          <button type="submit" className={styles.loginBtn} disabled={isPending}>
-            {isPending ? '⌛ Consulting the Eye…' : '🔴 Enter the Portal'}
-          </button>
+          <IgrButton type="submit" disabled={isPending}>
+            <span>{isPending ? '⌛ Consulting the Eye…' : '🔴 Enter the Portal'}</span>
+          </IgrButton>
         </form>
         <p className={styles.oathHint}>Hint: any non-empty oath is accepted.</p>
       </div>
@@ -159,8 +153,7 @@ function ReportForm({
         <p className={styles.submittedMsg}>
           Your report has been transmitted to Barad-dûr. The Dark Lord acknowledges your service.
         </p>
-        <button
-          className={styles.newReportBtn}
+        <IgrButton
           onClick={() => {
             setSubmitted(false);
             setProgress(50);
@@ -168,8 +161,8 @@ function ReportForm({
             setUrgency('Medium');
           }}
         >
-          📋 Submit Another Report
-        </button>
+          <span>📋 Submit Another Report</span>
+        </IgrButton>
       </div>
     );
   }
@@ -183,9 +176,8 @@ function ReportForm({
           <p className={styles.fieldHint}>
             Describe your ongoing military, political, and logistical operations.
           </p>
-          <textarea
+          <IgrTextarea
             name="activities"
-            className={styles.styledTextarea}
             rows={4}
             placeholder="Currently marshalling forces at…"
             disabled={isPending}
@@ -197,9 +189,8 @@ function ReportForm({
           <p className={styles.fieldHint}>
             What victories and milestones have been secured in service of the Dark Lord?
           </p>
-          <textarea
+          <IgrTextarea
             name="achievements"
-            className={styles.styledTextarea}
             rows={4}
             placeholder="Successfully crushed the resistance at…"
             disabled={isPending}
@@ -211,9 +202,8 @@ function ReportForm({
           <p className={styles.fieldHint}>
             Concealing failures is punishable by worse than death. Report with full honesty.
           </p>
-          <textarea
+          <IgrTextarea
             name="failures"
-            className={styles.styledTextarea}
             rows={4}
             placeholder="The fellowship escaped due to…"
             disabled={isPending}
@@ -227,14 +217,12 @@ function ReportForm({
               <span className={styles.progressValue}>{progress}%</span>
             </label>
             <p className={styles.fieldHint}>0 = total failure · 100 = objective complete.</p>
-            <input
-              type="range"
+            <IgrSlider
               name="progress"
-              min="0"
-              max="100"
+              min={0}
+              max={100}
               value={progress}
-              onChange={e => setProgress(+e.target.value)}
-              className={styles.styledRange}
+              onInput={(e: CustomEvent<number>) => setProgress(e.detail)}
               disabled={isPending}
             />
           </div>
@@ -242,41 +230,33 @@ function ReportForm({
           <div className={styles.formGroup}>
             <label className={styles.fieldLabel}>🚩 Mission Status</label>
             <IgrSelect
-              value={status}
+              name="status"
               disabled={isPending}
-              onChange={(e: CustomEvent<{ value: string }>) =>
-                setStatus(e.detail.value as CommanderReport['status'])
-              }
             >
               <IgrSelectItem value="On Track">On Track</IgrSelectItem>
               <IgrSelectItem value="Delayed">Delayed</IgrSelectItem>
               <IgrSelectItem value="Critical">Critical</IgrSelectItem>
               <IgrSelectItem value="Completed">Completed</IgrSelectItem>
             </IgrSelect>
-            <input type="hidden" name="status" value={status} />
           </div>
 
           <div className={styles.formGroup}>
             <label className={styles.fieldLabel}>⚠️ Urgency Level</label>
             <IgrSelect
-              value={urgency}
+              name="urgency"
               disabled={isPending}
-              onChange={(e: CustomEvent<{ value: string }>) =>
-                setUrgency(e.detail.value as CommanderReport['urgency'])
-              }
             >
               <IgrSelectItem value="Critical">Critical</IgrSelectItem>
               <IgrSelectItem value="High">High</IgrSelectItem>
               <IgrSelectItem value="Medium">Medium</IgrSelectItem>
               <IgrSelectItem value="Low">Low</IgrSelectItem>
             </IgrSelect>
-            <input type="hidden" name="urgency" value={urgency} />
           </div>
         </div>
 
-        <button type="submit" className={styles.submitBtn} disabled={isPending}>
-          {isPending ? '⌛ Dispatching to Barad-dûr…' : '📜 Submit Report to the Dark Lord'}
-        </button>
+        <IgrButton type="submit" disabled={isPending}>
+          <span>{isPending ? '⌛ Dispatching to Barad-dûr…' : '📜 Submit Report to the Dark Lord'}</span>
+        </IgrButton>
       </form>
     </>
   );
@@ -321,14 +301,14 @@ function ReportView({
           </div>
         </div>
         <div className={styles.bannerActions}>
-          <button className={styles.toggleBtn} onClick={() => setShowHistory(h => !h)}>
-            {showHistory
+          <IgrButton onClick={() => setShowHistory(h => !h)}>
+            <span>{showHistory
               ? '📋 Submit Report'
-              : `📜 History (${optimisticReports.length})`}
-          </button>
-          <button className={styles.logoutBtn} onClick={onLogout}>
-            🚪 Retreat
-          </button>
+              : `📜 History (${optimisticReports.length})`}</span>
+          </IgrButton>
+          <IgrButton onClick={onLogout}>
+            <span>🚶 Retreat</span>
+          </IgrButton>
         </div>
       </div>
 

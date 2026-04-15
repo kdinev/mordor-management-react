@@ -19,7 +19,7 @@ const navItems = [
 ];
 
 export default function Layout() {
-  const [drawerOpen, setDrawerOpen] = useState(true);
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const location = useLocation();
 
   const currentPage = navItems.find(item =>
